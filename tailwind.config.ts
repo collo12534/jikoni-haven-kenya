@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					light: 'hsl(var(--primary-light))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,6 +53,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Kitchen-themed colors
+				'kitchen-green': 'hsl(var(--kitchen-green))',
+				'kitchen-green-light': 'hsl(var(--kitchen-green-light))',
+				'warm-white': 'hsl(var(--warm-white))',
+				'sage': 'hsl(var(--sage))',
+				'terracotta': 'hsl(var(--terracotta))',
+				'charcoal': 'hsl(var(--charcoal))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

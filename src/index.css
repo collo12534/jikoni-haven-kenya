@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
+/* Kitchenware eCommerce Design System - inspired by kitchen aesthetics */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Kitchen-inspired color palette */
+    --background: 35 20% 98%;
+    --foreground: 25 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 25 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 25 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sage green primary - calming kitchen color */
+    --primary: 120 25% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 120 25% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Warm secondary - wood-inspired */
+    --secondary: 35 25% 90%;
+    --secondary-foreground: 25 15% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 35 15% 95%;
+    --muted-foreground: 25 10% 50%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - warm terracotta */
+    --accent: 15 65% 75%;
+    --accent-foreground: 25 15% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 15% 88%;
+    --input: 35 15% 92%;
+    --ring: 120 25% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom kitchen-themed colors */
+    --kitchen-green: 120 25% 45%;
+    --kitchen-green-light: 120 25% 85%;
+    --warm-white: 35 20% 98%;
+    --sage: 120 15% 60%;
+    --terracotta: 15 65% 75%;
+    --charcoal: 25 15% 25%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--warm-white)), hsl(var(--kitchen-green-light)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--muted)));
+    --gradient-button: linear-gradient(135deg, hsl(var(--kitchen-green)), hsl(var(--sage)));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 16px hsl(var(--kitchen-green) / 0.1);
+    --shadow-card: 0 8px 24px hsl(var(--charcoal) / 0.06);
+    --shadow-button: 0 4px 12px hsl(var(--kitchen-green) / 0.3);
+
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +124,93 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+}
+
+@layer components {
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Card Styles */
+  .card-gradient {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Button Variants */
+  .btn-hero {
+    background: var(--gradient-button);
+    box-shadow: var(--shadow-button);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsl(var(--kitchen-green) / 0.4);
+  }
+
+  /* Product Card Styles */
+  .product-card {
+    transition: var(--transition-spring);
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-soft);
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Navigation Styles */
+  .nav-link {
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background: hsl(var(--kitchen-green));
+    transition: var(--transition-smooth);
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Animation Classes */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .scale-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .scale-hover:hover {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
